@@ -1,0 +1,53 @@
+{
+"networks":{
+  
+  "bscTestnet":{
+    "linkAddress": "0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06",
+    "wrapperAddress": "0x699d428ee890d55D56d5FC6e26290f3247A762bd",
+    "factoryV2Address": "0x6725F303b657a9451d8BA641348b6761A6CC7a17", 
+    "wethAddress" : "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+    "routerV2Address" : "0xD99D1c33F9fC3444f8101754aBC46c52416550D1" 
+  },
+  "ethMainNet":{
+    "linkAddress" : "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+    "wrapperAddress" : "0x5A861794B927983406fCE1D062e00b9368d97Df6",
+    "factoryV2Address": "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f", 
+    "wethAddress" : "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "routerV2Address" : "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D" 
+  },
+  "sepolia":{
+    "linkAddress" : "0x779877A7B0D9E8603169DdbD7836e478b4624789",
+    "wrapperAddress" : "0xab18414CD93297B0d12ac29E63Ca20f515b3DB46",
+    "factoryV2Address": "0x9fF6e554e6d01556cae6E2dFCc83aC176f976780", 
+    "wethAddress" : "0x5DA79257670833489c9250df3D713E87864E7122",
+    "routerV2Address":"0xD12e14D4b6e315c0C5CFd27Fc5C302fdE2b7117C"
+  },
+  "localhost":{
+    "linkAddress" : "0x779877A7B0D9E8603169DdbD7836e478b4624789",
+    "wrapperAddress" : "0xab18414CD93297B0d12ac29E63Ca20f515b3DB46",
+    "factoryV2Address": "0x9fF6e554e6d01556cae6E2dFCc83aC176f976780", 
+    "wethAddress" : "0x5DA79257670833489c9250df3D713E87864E7122",
+    "routerV2Address":"0xD12e14D4b6e315c0C5CFd27Fc5C302fdE2b7117C",
+    "traderJoeRouterV2": "0x60aE616a2155Ee3d9A68541Ba4544862310933d4"
+  },
+  "goerli":{
+    "factoryV2Address": "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f", 
+    "wethAddress" : "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
+    "routerV2Address" : "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D" 
+  },
+  "avax" : {
+    "traderJoeRouterV2": "0x60aE616a2155Ee3d9A68541Ba4544862310933d4",
+    "wethAddress" : "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+  },
+  "fuji" : {
+    "traderJoeRouterV2": "0xd7f655E3376cE2D7A2b08fF01Eb3B1023191A901"
+  },
+  "hardhat":{
+    "linkAddress": "0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06",
+    "wrapperAddress": "0x699d428ee890d55D56d5FC6e26290f3247A762bd",
+    "factoryV2Address": "0x182859893230dC89b114d6e2D547BFFE30474a21", 
+    "wethAddress" : "0xBdf1a2e17DECb2aAC725F0A1C8C4E2205E70719C",
+    "routerV2Address" : "0xdc4904b5f716Ff30d8495e35dC99c109bb5eCf81" 
+  }
+  }  
+}
