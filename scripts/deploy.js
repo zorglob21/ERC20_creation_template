@@ -6,13 +6,12 @@ const paramsFile = fs.readFileSync("./params.json");
 const params = JSON.parse(paramsFile);
 
 
-
+//to deploy to real chain
 
 
 async function main() {
 
   const network = await ethers.provider.getNetwork();
-  console.log(network);
 
   const factoryV2Address = params.networks[network.name].factoryV2Address;
   const routerV2Address = params.networks[network.name].routerV2Address;
@@ -23,14 +22,23 @@ async function main() {
   const [owner] = await ethers.getSigners();
 
   console.log("Deploying contracts with the account:", owner.address);   
-  console.log("Account balance:", (await owner.provider.getBalance(owner.address)).toString());   
-  
+  console.log("Account balance:", (await owner.provider.getBalance(owner.address)).toString());  
+  const totalSupply = ethers.parseEther('10000000');
+//deploy apex required token
+  const Apex = await ethers.getContractFactory("ApexToken");
+
+  const apex = await Apex.deploy(totalSupply);
+  await apex.deploymentTransaction().wait(3);
+  apexAddress = apex.target;
+
+  console.log('apex token deployed to :', apexAddress);
+
+//deploy Erc20  
   const ERC20_custom = await ethers.getContractFactory("CustomERC20");
   
-  const totalSupply = ethers.parseEther('10000000');
-
   const erc20_custom = await ERC20_custom.deploy("ERC20_custom", 't1',
-  totalSupply, '0x0000000000000000000000000000000000000000', owner.address, '0x2b08b5cD22ACb7686f62dA423c2b83dfa591De66', routerV2Address);
+  totalSupply, apexAddress, owner.address, '0x2b08b5cD22ACb7686f62dA423c2b83dfa591De66',
+  routerV2Address, wethAddress, factoryV2Address);
 
   await erc20_custom.deploymentTransaction().wait(3);
 
@@ -62,20 +70,8 @@ async function main() {
  
   console.log('pair address is :', pairAddress);
 
-  const Apex = await ethers.getContractFactory("ApexToken");
-
-  const apex = await Apex.deploy(totalSupply);
-  await apex.deploymentTransaction().wait(3);
-  apexAddress = apex.target;
-
-  console.log('apex token deployed to :', apexAddress);
-
-
   let tx0 = await erc20_custom.setRequiredTokenMode(true);
   await tx0.wait(3);
-
-  let tx1 = await erc20_custom.setRequiredToken(apexAddress);
-  await tx1.wait(3);
 
   let tx2 = await erc20_custom.setPoolList(pairAddress, true);
   await tx2.wait(3);

@@ -9,6 +9,8 @@ const factoryV2Address = params.networks[network.name].factoryAddress;
 const routerV2Address = params.networks[network.name].routerAddress;
 const wethAddress = params.networks[network.name].wbnbAddress;
 
+// to deploy on local instance of the blockchain
+
 async function main() {
 
   const network = await ethers.provider.getNetwork();

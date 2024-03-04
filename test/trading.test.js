@@ -10,6 +10,8 @@ const routerV2Address = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
 const factoryV2Address = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f';
 const wethAddress= '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6';
 
+//test deployment + liquidity creation + trading + liquidity removal + needed token function + taxes with automated sales and sending
+
 describe('deploying, creating a lp, trading and withdrawing liquidities on an ERC20 token', function(){
 it("deploying contracts", async function(){
 
@@ -202,7 +204,7 @@ it("selling the token with automatic swap triggering", async function(){
   expect(addr2BalanceAfterSwap, 'problem with number of token on seller address').to.be.below(addr2BalanceBeforeSwap_);
 })
 
-/** 
+
 it('testing automatic swap function outside of a sell',async function(){
   await erc20_custom.setRequiredTokenMode(false);
   let marketingWallet2EthBalance = await ethers.provider.getBalance(await erc20_custom.marketingWallet2());
@@ -220,7 +222,7 @@ it('testing automatic swap function outside of a sell',async function(){
   let marketingWallet2EthBalance2 = await ethers.provider.getBalance(await erc20_custom.marketingWallet2());
  
 })
-*/
+
 it("setting required token and try selling without it", async function(){
 
   await erc20_custom.setRequiredToken(apexAddress);

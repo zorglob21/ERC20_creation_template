@@ -9,7 +9,7 @@ const factoryV2Address = params.networks[network.name].factoryAddress;
 const routerV2Address = params.networks[network.name].routerAddress;
 const wethAddress = params.networks[network.name].wbnbAddress;
 
-
+// to create a LP for the custom token
 
 async function main() {
 
@@ -25,16 +25,16 @@ async function main() {
 
   const { abi : ERC20Abi } = require("../artifacts/contracts/ERC20_Custom.sol/CustomERC20.json");
   const Erc20 = new ethers.Contract(ERC20Address, ERC20Abi, owner)
-/*
+
   const approval = await Erc20.approve(routerV2Address, totalSupply);
   await approval.wait(5);
-*/
+
   let blockNumber = await provider.getBlockNumber();  
   // Get the block information for the current block
   let block = await provider.getBlock(blockNumber); 
   // Extract the timestamp from the block
   let deadline = block.timestamp + 60*10;
-/**
+
   const pairCreation = await routerv2.addLiquidityETH(ERC20Address,
     totalSupply,0, 0, owner.address, deadline,{value : 100000000000000});
   await pairCreation.wait(3);
@@ -45,19 +45,18 @@ async function main() {
   let pairAddress = await factoryV2.getPair(ERC20Address, wethAddress); 
   await pairAddress.wait(1);
   console.log('pair address is :', pairAddress);
-*/
   const Apex = await ethers.getContractFactory("ApexToken");
-/*
+
   const apex = await Apex.deploy(totalSupply);
   await apex.deploymentTransaction().wait(4);
   apexAddress = apex.target;
 
   console.log('apex token deployed to :', apexAddress);
-*/
-/*
+
+
   let tx0 = await Erc20.setRequiredTokenMode(true);
-  await tx0.wait(6);
-*/
+  await tx0.wait(3);
+
   let tx1 = await Erc20.setRequiredToken('0x58da89bc75E4A9FF7c35b5074c2Ba752e5fb7B12');
   await tx1.wait(3);
 
